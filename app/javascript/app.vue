@@ -6,17 +6,24 @@
         <p>{{ feedback.title }}</p>
       </li>
     </ul>
+    <FeedbacksList />
   </div>
 </template>
 
 <script>
+import FeedbacksList from './components/FeedbacksList.vue'
 import { api } from './packs/api/client';
+import "./stylesheets/main";
+
 export default {
   data: function () {
     return {
       message: "Hello! Here you will find the feedbacks",
       feedbacks: []
     }
+  },
+  components: {
+    FeedbacksList
   },
   mounted() {
     this.loadFeedback();
