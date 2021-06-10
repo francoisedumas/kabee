@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import FeedbacksList from './components/FeedbacksList.vue'
+import FeedbacksList from './components/FeedbacksList.vue';
 import { api } from './packs/api/client';
 import "./stylesheets/main";
 
@@ -31,7 +31,6 @@ export default {
   methods: {
     loadFeedback() {
       return api.feedbacks().then((response) => {
-        console.log('coucou')
         this.feedbacks = response.data;
       });
     }

@@ -5,41 +5,33 @@
       :key="index"
       :title="feedback.title"
       :description="feedback.description"
-      :done="feedback.done"
+      :rating="feedback.rating"
     />
   </div>
 </template>
 
 <script>
 import FeedbackCard from "./FeedbackCard";
+import { api } from '../packs/api/client';
 
 export default{
+  data() {
+    return {
+      feedbacks: [],
+    }
+  },
   components: {
     FeedbackCard
   },
-  data() {
-    return {
-      feedbacks: [
-        {
-          title: "Create a card component",
-          description:
-            "Create a new TaskCard.vue file in the components folder, then import it in TasksList",
-          done: true,
-        },
-        {
-          title: "Make the card component dynamic",
-          description:
-            "Learn about using the data option and passing data to child components using props",
-          done: true,
-        },
-        {
-          title: "Bind the attributes to the data",
-          description:
-            "Use the v-bind directive to bind the title and description to our data",
-          done: false,
-        },
-      ],
-    };
+  mounted() {
+    this.loadFeedback();
+  },
+  methods: {
+    loadFeedback() {
+      return api.feedbacks().then((response) => {
+        this.feedbacks = response.data
+      });
+    }
   },
 }
 </script>

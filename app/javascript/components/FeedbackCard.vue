@@ -12,7 +12,7 @@ export default {
   props: {
     title: String,
     description: String,
-    done: Boolean,
+    rating: Number,
   },
 };
 </script>
@@ -42,7 +42,7 @@ export default {
     flex-direction: column;
     justify-content: center;
   }
-  &.done {
+  &.rating {
     border-left: solid 8px rgba(#35495e, 0.3);
     background-color: rgba(#35495e, 0.08);
     h3,

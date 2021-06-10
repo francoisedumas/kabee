@@ -10,7 +10,8 @@ puts "User created"
 user = User.first
 # Creating feedbacks
 puts "Creating feedbacks"
-Feedback.create!(title: "My feedback", user: user)
-Feedback.create!(title: "My second feedback", user: user)
+Feedback.create!(title: "My feedback", description: "This first feedback will be displayed soon", rating: 0, user: user)
+Feedback.create!(title: "My second feedback", description: "This second feedback will follow", rating: 0, user: user)
+Feedback.create!(title: "1 last thing", description: "More to come...", rating: 1, user: user)
 # Feedback created
 puts "Feedbacks created"
