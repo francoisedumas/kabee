@@ -16,5 +16,8 @@ export const apiClient = axios.create({
 export const api = {
   getFeedbacks() {
     return apiClient.get(`/api/v1/feedbacks`);
+  },
+  postFeedbacks(title, description, rating, user) {
+    return apiClient.post(`/api/v1/feedbacks`, { feedback: { title: title, description: description, rating: rating, user_id: user }});
   }
 }
