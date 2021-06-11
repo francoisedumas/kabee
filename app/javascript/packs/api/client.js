@@ -14,7 +14,7 @@ export const apiClient = axios.create({
 });
 
 export const api = {
-  feedbacks() {
+  getFeedbacks() {
     return apiClient.get(`/api/v1/feedbacks`);
   }
 }

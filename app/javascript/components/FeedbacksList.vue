@@ -1,12 +1,17 @@
 <template>
   <div>
-    <FeedbackCard 
-      v-for="(feedback, index) in feedbacks"
-      :key="index"
-      :title="feedback.title"
-      :description="feedback.description"
-      :rating="feedback.rating"
-    />
+    <div v-if="feedbacks.length >0">
+      <FeedbackCard 
+        v-for="(feedback, index) in feedbacks"
+        :key="index"
+        :title="feedback.title"
+        :description="feedback.description"
+        :rating="feedback.rating"
+      />
+    </div>
+    <div v-else>
+      You don't have any feedbacks yet...
+    </div>
   </div>
 </template>
 
@@ -28,7 +33,7 @@ export default{
   },
   methods: {
     loadFeedback() {
-      return api.feedbacks().then((response) => {
+      return api.getFeedbacks().then((response) => {
         this.feedbacks = response.data
       });
     }
