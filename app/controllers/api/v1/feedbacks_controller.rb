@@ -17,12 +17,12 @@ module Api
 
       # POST /feedbacks
       def create
-          @feedback = current_user.feedbacks.build(feedback_params)
+          @feedback = Feedback.new(feedback_params)
 
           if @feedback.save
-          render json: @feedback, status: :created
+            render json: @feedback, status: :created
           else
-          render json: @feedback.errors, status: :unprocessable_entity
+            render json: @feedback.errors, status: :unprocessable_entity
           end
       end
 
@@ -48,7 +48,7 @@ module Api
 
       # Only allow a trusted parameter "white list" through.
       def feedback_params
-      params.require(:feedback).permit(:title, :user_id)
+      params.require(:feedback).permit(:title, :description, :rating, :user_id)
       end
     end
   end
