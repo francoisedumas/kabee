@@ -1,1 +1,5 @@
-<div id='app'></div>
+<% if user_signed_in? %>
+  <div id='app'></div>
+<% else %>
+  <h1 class="title">Sign in and access a new world!</h1>
+<% end %>
