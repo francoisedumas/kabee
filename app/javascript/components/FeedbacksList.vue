@@ -61,7 +61,7 @@ export default{
     },
     addFeedback(title, description, rating = 5) {
       this.newFormVisible = false;
-      return api.postFeedbacks(this.newTitle, this.newDescription, this.rating, 4 ).then((response) => {
+      return api.postFeedbacks(this.newTitle, this.newDescription, this.rating ).then((response) => {
         this.feedbacks.push(response.data)
         this.newTitle = ''
         this.newDescription = ''

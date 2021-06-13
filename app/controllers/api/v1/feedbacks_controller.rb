@@ -18,7 +18,8 @@ module Api
       # POST /feedbacks
       def create
           @feedback = Feedback.new(feedback_params)
-
+          @feedback.user = current_user
+          
           if @feedback.save
             render json: @feedback, status: :created
           else
