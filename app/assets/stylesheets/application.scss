@@ -35,8 +35,12 @@ body, button, input, textarea {
   font-family: Poppins, Helvetica, Arial, sans-serif;
 }
 
-h3, p, input, textarea {
+h1, h3, p, input, textarea {
   margin: 0;
+}
+
+.title {
+  text-align: center;
 }
 
 input, textarea {
@@ -46,6 +50,14 @@ input, textarea {
     outline: none;
     background-color: rgba(#41B883, 0.1);
   }
+  &:hover {
+    outline: none;
+    background-color: rgba(rgba(194, 194, 194, 0.7), 0.1);
+  }
+}
+
+input {
+  background-color: rgba(rgba(117, 117, 117, 0.7), 0.1);
 }
 
 .btn {
@@ -87,4 +99,10 @@ input, textarea {
   margin-top: 2rem;
   color: rgba(black, 0.3);
   font-size: 0.9rem;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }
