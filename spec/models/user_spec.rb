@@ -34,4 +34,20 @@ RSpec.describe User, type: :model do
     user.valid?
     expect(user.errors[:email]).to include("has already been taken")
   end
+
+  context 'new user' do
+    subject(:nice) {User.create(first_name: "Brice", last_name: "Nice", password: "azerty", email: "bnice@lewagon.com")}
+
+    it 'also has a last name' do
+      expect(nice).to have_attributes(last_name: 'Nice')
+    end
+  end
+
+  context 'a very new user' do
+    it 'is also added to database with change' do
+      expect {
+        User.create(first_name: "Lorem", last_name: "Lorem", password: "azerty", email: "lorem@lewagon.com")
+      }.to change { User.count }
+    end
+  end
 end
