@@ -1,8 +1,21 @@
 Rails.application.routes.draw do
-  root to: 'home#index'
-  devise_for :users
+  devise_for :users, path: ''
+  devise_scope :user do
+    authenticated do
+      root 'home#index', as: :authenticated_root
+    end
+    unauthenticated do
+      root 'devise/sessions#new', as: :unauthenticated_root
+    end
+  end
+  # authenticate :user, ->(user) { user.admin? } do
+  #   scope :admin do
+  #     resources :users, only: :index, controller: "admin/users"
+  #   end
+  # end
+
   namespace :api do
-    namespace :v1 do      
+    namespace :v1 do
       resources :feedbacks
     end
   end

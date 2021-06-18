@@ -36,7 +36,7 @@ RSpec.describe User, type: :model do
   end
 
   context 'new user' do
-    subject(:nice) {User.create(first_name: "Brice", last_name: "Nice", password: "azerty", email: "bnice@lewagon.com")}
+    subject(:nice) { User.create(first_name: "Tom", last_name: "Nice", password: "azerty", email: "bnice@lewagon.com") }
 
     it 'also has a last name' do
       expect(nice).to have_attributes(last_name: 'Nice')

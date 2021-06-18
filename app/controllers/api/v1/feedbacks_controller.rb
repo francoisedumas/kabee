@@ -1,4 +1,4 @@
-module API
+module Api
   module V1
     class FeedbacksController < ApplicationController
       before_action :set_feedback, only: [:show, :update, :destroy]
