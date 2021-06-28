@@ -1,24 +1,37 @@
-# README
+### RoR / Vue.js Workshop
+## Introduction to Vue.js using Ruby on Rails for the back
+The target is to build a simple feedback application using 
+ - RoR as an API back end
+ - Vue.js for the front end
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Starting with API back end
+### Rails new
+Let's start by creating a new Rails app calling Vue.js with Webpack
+```
+rails new kabee --webpack=vue --database=postgresql
 
-Things you may want to cover:
+cd kabee
+git add . && git commit -m "rails new"
+gh repo create
+git push origin master
+```
+### Creating the DB
+```
+rails db:create
+rails db:migrate RAILS_ENV=development
+```
+### Authentification with Devise and User model creation
+We will use Devise for the authentification and to create the user model
+```
+# Gemfile
+gem 'devise'
 
-* Ruby version
+bundle install
+rails generate devise:install
 
-* System dependencies
+rails generate devise User
+rails db:migrate
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+rails generate migration AddNameToUser first_name:string last_name:string
+rails db:migrate
+```
