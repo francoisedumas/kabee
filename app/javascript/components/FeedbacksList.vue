@@ -27,7 +27,8 @@
         :title="feedback.title"
         :description="feedback.description"
         :rating="feedback.rating"
-        @update-star="updateStar"
+        :id="feedback.id"
+        @update-star="updateStar(feedback.id, $event)"
       />
     </div>
     <p v-else-if="!newFormVisible">You don't have any tasks yet...</p>
@@ -73,8 +74,10 @@ export default{
       this.newTitle = ""
       this.newDescription = ""
     },
-    updateStar(star) {
-      console.log(star);
+    updateStar(id, star) {
+      return api.updateFeedbacks(id, star).then((response) => {
+        this.$mount();
+      });
     }
   },
 }
