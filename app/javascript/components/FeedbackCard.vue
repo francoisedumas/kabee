@@ -4,9 +4,10 @@
       <h3>{{ title }}</h3>
       <p>{{ description }}</p>
       <Rating
-        :grade="3"
+        :grade= rating
         :maxStars="5"
         :hasCounter="true"
+        @submit-star="submitStar"
       />
     </div>
   </div>
@@ -23,6 +24,12 @@ export default {
   },
   components: {
     Rating
+  },
+  methods: {
+    submitStar(star) {
+      this.$emit('update-star', star);
+      // console.log(star);
+    }
   },
 };
 </script>

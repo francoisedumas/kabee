@@ -1,7 +1,7 @@
 <template>
   <div class="rating">
     <ul class="list">
-      <li @click="rate(star)" v-for="star in maxStars" :class="{ 'active': star <= stars }" :key="star.stars" class="star">
+      <li @click="rate(star), submitStar(star)" v-for="star in maxStars" :class="{ 'active': star <= stars }" :key="star.stars" class="star">
       <i :class="star <= stars ? 'fas fa-star' : 'far fa-star'"></i>
       </li>
     </ul>
@@ -26,6 +26,12 @@ export default {
     rate(star) {
       if (typeof star === 'number' && star <= this.maxStars && star >= 0) {
         this.stars = this.stars === star ? star - 1 : star
+      }
+    },
+    submitStar(star) {
+      if (typeof star === 'number' && star <= this.maxStars && star >= 0) {
+        this.$emit('submit-star', star);
+        // console.log(star);
       }
     }
   },

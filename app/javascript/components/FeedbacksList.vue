@@ -9,24 +9,25 @@
       @keyup.enter="addFeedback(newTitle, newDescription), resetForm()"
     >
       <div>
-        <input 
+        <input
           type="text"
           placeholder="Give a title to your feedback"
           v-model="newTitle"
         />
-        <textarea 
+        <textarea
           placeholder="Add some details about your feedback"
           v-model="newDescription"
         ></textarea>
       </div>
     </div>
     <div v-if="feedbacks.length >0">
-      <FeedbackCard 
+      <FeedbackCard
         v-for="(feedback, index) in feedbacks"
         :key="index"
         :title="feedback.title"
         :description="feedback.description"
         :rating="feedback.rating"
+        @update-star="updateStar"
       />
     </div>
     <p v-else-if="!newFormVisible">You don't have any tasks yet...</p>
@@ -71,6 +72,9 @@ export default{
     resetForm() {
       this.newTitle = ""
       this.newDescription = ""
+    },
+    updateStar(star) {
+      console.log(star);
     }
   },
 }
