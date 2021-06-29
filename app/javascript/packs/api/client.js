@@ -18,6 +18,9 @@ export const api = {
     return apiClient.get(`/api/v1/feedbacks`);
   },
   postFeedbacks(title, description, rating) {
-    return apiClient.post(`/api/v1/feedbacks`, { feedback: { title: title, description: description, rating: rating}});
+    return apiClient.post(`/api/v1/feedbacks`, { feedback: { title: title, description: description, rating: rating }});
+  },
+  updateFeedbacks(id, rating) {
+    return apiClient.patch (`/api/v1/feedbacks/${id}`, { feedback: { rating: rating }});
   }
 }
