@@ -10,6 +10,9 @@
         @submit-star="submitStar"
       />
     </div>
+    <button class="btn round-icon" @click="deleteFeedback()">
+      {{ "delete" }}
+    </button>
   </div>
 </template>
 
@@ -29,7 +32,10 @@ export default {
     submitStar(star) {
       this.$emit('update-star', star);
       // console.log(star);
-    }
+    },
+    deleteFeedback() {
+      this.$emit('delete-feedback');
+    },
   },
 };
 </script>

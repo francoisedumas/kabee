@@ -29,6 +29,7 @@
         :rating="feedback.rating"
         :id="feedback.id"
         @update-star="updateStar(feedback.id, $event)"
+        @delete-feedback="deleteFeedback(feedback.id)"
       />
     </div>
     <p v-else-if="!newFormVisible">You don't have any tasks yet...</p>
@@ -75,8 +76,16 @@ export default{
       this.newDescription = ""
     },
     updateStar(id, star) {
-      return api.updateFeedbacks(id, star).then((response) => {
+      return api.updateFeedbacks(id, star).then((_response) => {
         this.$mount();
+      });
+    },
+    deleteFeedback(id) {
+      return api.destroyFeedback(id).then((_response) => {
+        console.log(id);
+        let index = this.feedbacks.findIndex( el => el.id === id );
+        console.log(index);
+        this.feedbacks.splice(index, 1);
       });
     }
   },
