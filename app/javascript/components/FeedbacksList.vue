@@ -22,8 +22,8 @@
     </div>
     <div v-if="feedbacks.length >0">
       <FeedbackCard
-        v-for="(feedback, index) in feedbacks"
-        :key="index"
+        v-for="feedback in feedbacks"
+        :key="feedback.id"
         :title="feedback.title"
         :description="feedback.description"
         :rating="feedback.rating"
@@ -77,15 +77,16 @@ export default{
     },
     updateStar(id, star) {
       return api.updateFeedbacks(id, star).then((_response) => {
-        this.$mount();
+        const feedback = this.feedbacks.find(f = f.id === id);
+
+        feedback.rating = response.feedback.rating;
       });
     },
     deleteFeedback(id) {
       return api.destroyFeedback(id).then((_response) => {
-        console.log(id);
+
         let index = this.feedbacks.findIndex( el => el.id === id );
-        console.log(index);
-        this.feedbacks.splice(index, 1);
+        this.$delete(this.feedbacks, index)
       });
     }
   },
